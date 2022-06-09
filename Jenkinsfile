@@ -4,6 +4,7 @@ pipeline {
     VAR = sh(script: 'sudo cat /tmp/replace.txt', returnStdout: true)
     }
 
+
     stages {
         stage('Ansible Version') {
             steps {

@@ -13,7 +13,10 @@ pipeline {
                 catchError(buildResult: 'Success', stageResult: 'Failure') {              
                 sh 'sudo cp -rf /home/ubuntu/terraform/vpc/ansible/Terraform_Role ./'               
                 sh 'sudo cat ./Terraform_Role/tests/inventory'
-                sh 'VAR=$(sudo cat /tmp/replace.txt)'
+                sh """#!/bin/bash
+                     VAR=$(sudo cat /tmp/replace.txt)
+                     echo "The value is \$VAR"
+                   """
                 sh 'echo ${VAR}'
                 sh 'sudo sed -i "2s/.*/${VAR}/g" ./Terraform_Role/tests/inventory'
                 sh 'sudo cat ./Terraform_Role/tests/inventory'

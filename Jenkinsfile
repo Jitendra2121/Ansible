@@ -6,6 +6,7 @@ pipeline {
     stages {
         stage('Ansible Version') {
             steps {
+                sh 'echo ${VAR}'
                 sh 'sudo ansible --version'
             }
         }

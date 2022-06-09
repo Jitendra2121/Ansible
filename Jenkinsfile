@@ -1,9 +1,9 @@
 pipeline {
     agent any
-/*#    environment {
-#     VAR=sh '$(sudo cat /tmp/replace.txt)'
-#    }
-*/
+    environment {
+    VAR=sh 'sudo cat /tmp/replace.txt'
+    }
+
     stages {
         stage('Ansible Version') {
             steps {

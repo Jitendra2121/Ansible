@@ -13,8 +13,9 @@ pipeline {
                 catchError(buildResult: 'Success', stageResult: 'Failure') {              
                 sh 'sudo cp -rf /home/ubuntu/terraform/vpc/ansible/Terraform_Role ./'               
                 sh 'sudo cat ./Terraform_Role/tests/inventory'
-                sh 'VAR=$(sudo cat "/tmp/replace.txt")'
-                sh 'sudo sed -i "2s/.*/${VAR}/g" ./Terraform_Role/tests/inventory'
+                sh "'VAR=$(sudo cat "/tmp/replace.txt")'"
+                sh 'echo ${VAR}'
+                sh "'sudo sed -i "2s/.*/${VAR}/g" ./Terraform_Role/tests/inventory'"
                 sh 'sudo cat ./Terraform_Role/tests/inventory'
                 sh 'ansible-playbook -i ./Terraform_Role/tests/inventory ./Terraform_Role/tests/test.yml'
 

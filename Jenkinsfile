@@ -23,7 +23,7 @@ pipeline {
                 sh """sudo sed -i '2s|'".*"'|'"${VAR}"'|' ./Terraform_Role/tests/inventory"""
                 sh 'sudo cat ./Terraform_Role/tests/inventory'
                 sh 'ansible-playbook -i ./Terraform_Role/tests/inventory ./Terraform_Role/tests/test.yml'
-/* "2s/.*/${VAR}/" */
+
                 echo "Succefully install nginx on EC2: ${VAR} using GIT->JENKINS->ANSIBLE->TERRAFORM."
                 }
             }

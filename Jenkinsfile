@@ -20,6 +20,7 @@ pipeline {
                 sh 'sudo cp -rf /home/ubuntu/terraform/vpc/ansible/Terraform_Role ./'               
                 sh 'sudo cp /home/ubuntu/terraform/vpc/terraform/Terraform_AWS_Keypair.pem ./'
                 sh 'sudo chown jenkins ./Terraform_AWS_Keypair.pem'
+                sh 'sudo chmod 400 Terraform_AWS_Keypair.pem'
                 sh 'sudo cat ./Terraform_Role/tests/inventory'
                 sh 'echo ${VAR}'
                 sh """sudo sed -i '2s/.*/${VAR}/g' ./Terraform_Role/tests/inventory"""

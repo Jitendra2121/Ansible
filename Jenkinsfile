@@ -1,7 +1,7 @@
 pipeline {
     agent any
     environment {
-    VAR=sh 'sudo cat /tmp/replace.txt'
+    VAR = sh(script: 'sudo cat /tmp/replace.txt', returnStdout: true)
     }
 
     stages {
